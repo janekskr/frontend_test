@@ -1,0 +1,15 @@
+@import 'base/reset';
+@import 'base/variables';
+@import 'base/breakpoints';
+@import 'base/mixins';
+
+@import 'layouts/header';
+@import 'layouts/footer';
+
+@import 'pages/home';
+
+body {
+    display: flex;
+    flex-direction: column;
+    color: $color-primary
+}

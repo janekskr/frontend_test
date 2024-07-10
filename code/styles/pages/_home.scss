@@ -1,0 +1,101 @@
+.home {
+  padding: 30px;
+  background: $background-home;
+  flex: 1;
+  gap: 40px;
+
+  @include flex-column;
+
+  .header {
+    &__title {
+      font-weight: normal;
+      padding-bottom: 20px;
+
+      &-border {
+        height: 2px;
+        margin: 0 20px;
+      }
+    }
+  }
+
+  .input-section {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+
+    div {
+      @include flex-column;
+
+      flex: 1;
+      align-items: flex-start;
+
+      h3 {
+        text-transform: uppercase;
+        margin-bottom: 40px;
+      }
+    }
+
+    > :nth-child(2) {
+      align-items: flex-end;
+    }
+
+    &__radio-buttons-container {
+      gap: 30px;
+      @include flex-column;
+      font-size: 1.2rem;
+
+      label {
+        @include flex;
+        gap: 15px;
+        color: $color-label;
+        cursor: pointer;
+
+        input {
+          appearance: none;
+          width: 30px;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+          background-clip: content-box;
+          border: 5px solid $color-primary;
+          background-color: transparent;
+        }
+        :checked {
+          background-color: blue;
+        }
+      }
+    }
+
+    &__buttons-container {
+      @include center;
+      gap: 25px;
+
+      button {
+        padding: 10px;
+        border-radius: 3px;
+        border: 1px solid $color-primary;
+        color: $color-button;
+        text-transform: uppercase;
+        font-weight: bold;
+        min-width: 200px;
+        max-width: 30%;
+      }
+    }
+  }
+
+  .text-section {
+    @include flex-column;
+    text-align: center;
+    gap: 30px;
+
+    &__title {
+      @include truncate;
+      text-transform: uppercase;
+      max-width: 90%;
+    }
+
+    &__description {
+      color: $color-button;
+      margin: 0 20px;
+    }
+  }
+}

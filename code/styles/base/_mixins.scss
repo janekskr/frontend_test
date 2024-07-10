@@ -1,0 +1,26 @@
+@mixin center {
+  justify-content: center;
+  @include flex;
+}
+
+@mixin flex {
+  display: flex;
+  align-items: center;
+}
+
+@mixin flex-column {
+  flex-direction: column;
+  @include flex;
+}
+
+@mixin scaleRadio($scale) {
+  -ms-transform: scale($scale);
+  -webkit-transform: scale($scale);
+  transform: scale($scale);
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

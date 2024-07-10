@@ -1,0 +1,19 @@
+.footer {
+    min-height: 120px;
+    padding: 20px;
+    background-color: $background-footer;
+
+    .css {
+        color: $color-css;
+        font-size: 1.7rem;
+        padding: 6px;
+        max-width: 120px;
+        aspect-ratio: 1/1;
+        border: 1px solid $color-css;
+        text-transform: uppercase;
+
+        p {
+            transform: translateX(5px);
+        }
+    }
+}
