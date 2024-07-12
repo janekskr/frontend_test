@@ -1,48 +1,92 @@
+"use client"
+
+import { useAppContext } from "@/components/Provider";
+import { generateNumber } from "@/utils";
+import { useState } from "react";
+
 export default function Home() {
+  const { saying, setNewSaying, addNewSaying } = useAppContext();
+  const [radio, setRadio] = useState<string | null>(null);
+
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => setRadio(event.target.value)
+
+  const handleSaying = (action: "set" | "add") => {
+    if (!radio) return;
+  
+    const newSaying = radio === "random" ? generateNumber() : +radio;
+    
+    if (action === 'set') {
+      setNewSaying(newSaying);
+    } else if (action === 'add') {
+      addNewSaying(newSaying);
+    }
+  };
+  
+  const handleSetSaying = () => handleSaying('set');
+  const handleAddSaying = () => handleSaying('add');
+  
+
   return (
     <main className="home">
       <header className="header">
         <h1 className="header__title">Nagłówek H1</h1>
         <hr className="header__title-border" />
       </header>
-      <section className="input-section">
-        <div>
-          <h3>Blok pierwszy</h3>
-          <div className="input-section__radio-buttons-container">
-            <label htmlFor="first">
-              <input type="radio" name="first" id="first" /> Opcja pierwsza
-            </label>
-            <label htmlFor="second">
-              <input type="radio" name="second" id="second" /> Opcja druga
-            </label>
-            <label htmlFor="random">
-              <input type="radio" name="random" id="random" /> Opcja losowa
-            </label>
+      <div className="sections-wrapper">
+        <section className="input-section">
+          <div className="content-container">
+            <h3>Blok pierwszy</h3>
+            <div className="input-section__radio-buttons-container">
+              <label htmlFor="first">
+                <input
+                  type="radio"
+                  name="radio-button"
+                  id="first"
+                  value="0"
+                  checked={radio === "0"}
+                  onChange={handleRadioChange}
+                />
+                Opcja pierwsza
+              </label>
+              <label htmlFor="second">
+                <input
+                  type="radio"
+                  name="radio-button"
+                  id="second"
+                  value="1"
+                  onChange={handleRadioChange}
+                />
+                Opcja druga
+              </label>
+              <label htmlFor="random">
+                <input
+                  type="radio"
+                  name="radio-button"
+                  id="random"
+                  value="random"
+                  onChange={handleRadioChange}
+                />
+                Opcja losowa
+              </label>
+            </div>
           </div>
-        </div>
-        <div>
-          <h3>blok drugi</h3>
-          <div className="input-section__buttons-container">
-            <button>Zastąp</button>
-            <button>Doklej</button>
+          <div className="content-container">
+            <h3>blok drugi</h3>
+            <div className="input-section__buttons-container">
+              <button onClick={handleSetSaying}>Zastąp</button>
+              <button onClick={handleAddSaying}>Doklej</button>
+            </div>
           </div>
-        </div>
-      </section>
-      <section className="text-section">
-        <h2 className="text-section__title">
-          Blok z długą nazwą która sama się przytnie
-        </h2>
-        <p className="text-section__description">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-          reprehenderit laboriosam, molestias eius blanditiis veritatis iusto,
-          maiores quis sint aliquam dicta ad nulla enim est quae id. Nisi,
-          placeat laboriosam. Est architecto dolorum, obcaecati perspiciatis
-          odit officia consequatur cupiditate dolores laboriosam! Excepturi
-          maxime, exercitationem id culpa vero quia eos, esse quasi ipsa
-          distinctio amet totam nihil commodi, placeat ducimus nemo!
-          Exercitationem fugit tenetur facere!=
-        </p>
-      </section>
+        </section>
+        <section className="text-section">
+          <h3 className="text-section__title">
+            Blok z długą nazwą która sama się przytnie
+          </h3>
+          <p className="text-section__description">
+            {saying.map(({content}) => <>{content} <br/></>)}
+          </p>
+        </section>
+      </div>
     </main>
   );
 }

@@ -24,3 +24,11 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+@mixin hover($prop: .3s) {
+  transition: $prop;
+  &:hover {
+    background-color: $color-hover;
+    @content;
+  }
+}

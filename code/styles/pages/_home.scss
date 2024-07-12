@@ -1,101 +1,162 @@
 .home {
-  padding: 30px;
+  padding: 2rem;
   background: $background-home;
   flex: 1;
-  gap: 40px;
+  gap: 2.5rem;
+
+  @include md {
+    gap: 4rem;
+  }
 
   @include flex-column;
 
   .header {
     &__title {
+      text-align: center;
       font-weight: normal;
       padding-bottom: 20px;
 
+      @include md {
+        font-size: 2.75rem;
+      }
+
       &-border {
         height: 2px;
+        background-color: $color-button;
+        margin: 0 20px;
+        border: none;
+      }
+    }
+  }
+
+  .sections-wrapper {
+    gap: 5vh;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    h3 {
+      text-transform: uppercase;
+      margin-bottom: 40px;
+      text-align: center;
+      width: 100%;
+
+      @include xs {
+        width: auto;
+      }
+
+      @include md {
+        width: 100%;
+      }
+    }
+
+    .input-section {
+      @include flex-column;
+      width: 100%;
+      gap: 5vh;
+
+      @include xs {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+      }
+
+      @include sm {
+        flex: 1.5;
+      }
+
+      .content-container {
+        @include flex-column;
+        align-items: flex-start;
+
+        @include xs {
+          flex: 1;
+        }
+      }
+
+      > :nth-child(2) {
+        @include xs {
+          align-items: flex-end;
+        }
+
+        @include lg {
+          align-items: center;
+        }
+      }
+
+      &__radio-buttons-container {
+        @include flex-column;
+        align-items: flex-start;
+        gap: 30px;
+        font-size: 1.2rem;
+
+        label {
+          @include flex;
+          gap: 15px;
+          color: $color-label;
+          cursor: pointer;
+
+          input {
+            appearance: none;
+            width: 30px;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            background-clip: content-box;
+            border: 5px solid $color-primary;
+            background-color: transparent;
+
+            &:checked {
+              box-shadow: inset 0 0 0 3px $background-home; /* Creates the gap and sets the inner fill color */
+              background-color: white;
+            }
+          }
+        }
+      }
+
+      &__buttons-container {
+        @include flex-column;
+        gap: 25px;
+
+        @include lg {
+          flex-direction: row;
+        }
+
+        button {
+          padding: 10px;
+          border-radius: 3px;
+          border: 1px solid $color-primary;
+          color: $color-button;
+          text-transform: uppercase;
+          font-weight: bold;
+          min-width: 200px;
+          max-width: 30%;
+
+          @include hover {
+            color: $color-primary;
+          }
+        }
+      }
+    }
+
+    .text-section {
+      @include flex-column;
+      text-align: center;
+      width: 100%;
+
+      &__title {
+        @include truncate;
+        max-width: 90%;
+      }
+
+      &__description {
+        color: $color-button;
         margin: 0 20px;
       }
-    }
-  }
 
-  .input-section {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-
-    div {
-      @include flex-column;
-
-      flex: 1;
-      align-items: flex-start;
-
-      h3 {
-        text-transform: uppercase;
-        margin-bottom: 40px;
+      @include sm {
+        flex: 1.25;
       }
-    }
-
-    > :nth-child(2) {
-      align-items: flex-end;
-    }
-
-    &__radio-buttons-container {
-      gap: 30px;
-      @include flex-column;
-      font-size: 1.2rem;
-
-      label {
-        @include flex;
-        gap: 15px;
-        color: $color-label;
-        cursor: pointer;
-
-        input {
-          appearance: none;
-          width: 30px;
-          aspect-ratio: 1/1;
-          border-radius: 50%;
-          background-clip: content-box;
-          border: 5px solid $color-primary;
-          background-color: transparent;
-        }
-        :checked {
-          background-color: blue;
-        }
-      }
-    }
-
-    &__buttons-container {
-      @include center;
-      gap: 25px;
-
-      button {
-        padding: 10px;
-        border-radius: 3px;
-        border: 1px solid $color-primary;
-        color: $color-button;
-        text-transform: uppercase;
-        font-weight: bold;
-        min-width: 200px;
-        max-width: 30%;
-      }
-    }
-  }
-
-  .text-section {
-    @include flex-column;
-    text-align: center;
-    gap: 30px;
-
-    &__title {
-      @include truncate;
-      text-transform: uppercase;
-      max-width: 90%;
-    }
-
-    &__description {
-      color: $color-button;
-      margin: 0 20px;
     }
   }
 }

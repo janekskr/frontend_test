@@ -1,19 +1,28 @@
 .footer {
-    min-height: 120px;
-    padding: 20px;
-    background-color: $background-footer;
+  padding: 20px 4vw;
+  background-color: $background-footer;
+  p {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    color: $color-css;
+    position: relative;
+    width: fit-content;
+    line-height: 1.2;
 
-    .css {
-        color: $color-css;
-        font-size: 1.7rem;
-        padding: 6px;
-        max-width: 120px;
-        aspect-ratio: 1/1;
-        border: 1px solid $color-css;
-        text-transform: uppercase;
-
-        p {
-            transform: translateX(5px);
-        }
+    &::before {
+      content: "";
+      top: -5px;
+      left: -8px;
+      width: 6rem;
+      display: block;
+      position: absolute;
+      aspect-ratio: 1/1;
+      border: 1px solid $color-css;
+      transition: rotate 0.5s ease;
     }
+    &:hover::before {
+      border-color: $color-hover;
+      rotate: 0.5turn;
+    }
+  }
 }
