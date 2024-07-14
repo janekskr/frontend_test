@@ -35,11 +35,9 @@ export default function Home() {
       </header>
       <div className="sections-wrapper">
         <section className="input-section" aria-labelledby="input-section-title">
-          <h2 id="input-section-title" className="visually-hidden">Sekcja wejściowa</h2>
           <div className="content-container">
             <h3>Blok pierwszy</h3>
             <div className="input-section__radio-buttons-container" role="group" aria-labelledby="radio-group-label">
-              <span id="radio-group-label" className="visually-hidden">Wybierz opcję</span>
               <label htmlFor="first">
                 <input
                   type="radio"
