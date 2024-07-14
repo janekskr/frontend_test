@@ -1,8 +1,8 @@
 "use client";
 
+import { useState } from "react";
 import { useAppContext } from "@/components/Provider";
 import { generateNumber } from "@/utils";
-import { useState } from "react";
 
 export default function Home() {
   const { saying, setNewSaying, addNewSaying } = useAppContext();
@@ -30,14 +30,16 @@ export default function Home() {
   return (
     <main className="home">
       <header className="header">
-        <h1 className="header__title">Nagłówek H1</h1>
+        <h1 className="header__title" id="main-title">Nagłówek H1</h1>
         <hr className="header__title-border" />
       </header>
       <div className="sections-wrapper">
-        <section className="input-section">
+        <section className="input-section" aria-labelledby="input-section-title">
+          <h2 id="input-section-title" className="visually-hidden">Sekcja wejściowa</h2>
           <div className="content-container">
             <h3>Blok pierwszy</h3>
-            <div className="input-section__radio-buttons-container">
+            <div className="input-section__radio-buttons-container" role="group" aria-labelledby="radio-group-label">
+              <span id="radio-group-label" className="visually-hidden">Wybierz opcję</span>
               <label htmlFor="first">
                 <input
                   type="radio"
@@ -72,15 +74,15 @@ export default function Home() {
             </div>
           </div>
           <div className="content-container">
-            <h3>blok drugi</h3>
+            <h3>Blok drugi</h3>
             <div className="input-section__buttons-container">
-              <button onClick={handleSetSaying}>Zastąp</button>
-              <button onClick={handleAddSaying}>Doklej</button>
+              <button onClick={handleSetSaying} aria-label="Zastąp aktualne powiedzenie">Zastąp</button>
+              <button onClick={handleAddSaying} aria-label="Doklej nowe powiedzenie">Doklej</button>
             </div>
           </div>
         </section>
-        <section className="text-section">
-          <h3 className="text-section__title">
+        <section className="text-section" aria-labelledby="text-section-title">
+          <h3 id="text-section-title" className="text-section__title">
             Blok z długą nazwą która sama się przytnie
           </h3>
           <p className="text-section__description">
