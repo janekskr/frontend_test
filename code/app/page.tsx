@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useAppContext } from "@/components/Provider";
 import { generateNumber } from "@/utils";
@@ -6,25 +6,26 @@ import { useState } from "react";
 
 export default function Home() {
   const { saying, setNewSaying, addNewSaying } = useAppContext();
-  const [radio, setRadio] = useState<string | null>(null);
+  const [radio, setRadio] = useState<RadioType>("0");
+  const [prevNum, setPrevNum] = useState<number>(0);
 
-  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) => setRadio(event.target.value)
+  type RadioType = "0" | "1" | "random";
+
+  const handleRadioChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setRadio(event.target.value as RadioType);
 
   const handleSaying = (action: "set" | "add") => {
     if (!radio) return;
-  
-    const newSaying = radio === "random" ? generateNumber() : +radio;
-    
-    if (action === 'set') {
-      setNewSaying(newSaying);
-    } else if (action === 'add') {
-      addNewSaying(newSaying);
-    }
+
+    const newSaying = radio === "random" ? generateNumber(prevNum) : +radio;
+
+    setPrevNum(newSaying);
+
+    action === "set" ? setNewSaying(newSaying) : addNewSaying(newSaying);
   };
-  
-  const handleSetSaying = () => handleSaying('set');
-  const handleAddSaying = () => handleSaying('add');
-  
+
+  const handleSetSaying = () => handleSaying("set");
+  const handleAddSaying = () => handleSaying("add");
 
   return (
     <main className="home">
@@ -83,7 +84,11 @@ export default function Home() {
             Blok z długą nazwą która sama się przytnie
           </h3>
           <p className="text-section__description">
-            {saying.map(({content}) => <>{content} <br/></>)}
+            {saying.map(({ content }, index) => (
+              <span key={index}>
+                {content} <br />
+              </span>
+            ))}
           </p>
         </section>
       </div>

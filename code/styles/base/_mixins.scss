@@ -29,6 +29,7 @@
   transition: $prop;
   &:hover {
     background-color: $color-hover;
+    color: $color-primary;
     @content;
   }
 }

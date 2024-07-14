@@ -1,10 +1,18 @@
 .footer {
+  @include flex;
+  justify-content: space-between;
+
   padding: 20px 4vw;
   background-color: $background-footer;
-  p {
-    text-transform: uppercase;
-    font-size: 1.5rem;
+
+  .css-text,
+  .company-name__text {
     color: $color-css;
+  }
+
+  .css-text {
+    font-size: 1.5rem;
+    text-transform: uppercase;
     position: relative;
     width: fit-content;
     line-height: 1.2;
@@ -23,6 +31,84 @@
     &:hover::before {
       border-color: $color-hover;
       rotate: 0.5turn;
+    }
+  }
+
+  .company-name {
+    display: none;
+    gap: 4px;
+    font-size: 1.25rem;
+
+    @include sm {
+      @include flex;
+    }
+
+    hr {
+      width: 60px;
+      height: 1px;
+      background-color: $color-css;
+    }
+  }
+
+  .popup-container {
+    position: relative;
+    display: inline-block;
+
+    .button {
+      @include center;
+      gap: 20px;
+      padding: 10px 4.5rem;
+      &__chevron {
+        transition: 0.3s ease;
+      }
+
+      &:hover {
+        background-color: transparent;
+
+        .button__chevron {
+          rotate: 0.5turn;
+        }
+
+        ~ .popup {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+
+    .popup {
+      opacity: 0;
+      visibility: hidden;
+      @include flex-column;
+      align-items: flex-start;
+      border-radius: 3px;
+      gap: 20px;
+      padding: 15px;
+      width: max-content;
+      position: absolute;
+      bottom: calc(100% + 20px);
+      left: 0;
+      background-color: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      transition: .75s;
+
+      &:hover {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      &__option {
+        cursor: pointer;
+        color: black;
+        font-size: .9rem;
+        font-weight: 500;
+
+        &:hover {
+          background-color: transparent;
+          color: $color-hover;
+        }
+      }
     }
   }
 }

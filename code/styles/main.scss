@@ -1,16 +1,26 @@
-@import 'base/variables';
-@import 'base/breakpoints';
-@import 'base/mixins';
+@import "base/variables";
+@import "base/breakpoints";
+@import "base/mixins";
 
-@import 'base/reset';
+@import "base/reset";
 
-@import 'layouts/header';
-@import 'layouts/footer';
+@import "layouts/header";
+@import "layouts/footer";
 
-@import 'pages/home';
+@import "pages/home";
 
 body {
-    display: flex;
-    flex-direction: column;
-    color: $color-primary
+  display: flex;
+  flex-direction: column;
+  color: $color-primary;
+}
+
+button {
+  border-radius: 3px;
+  color: $color-button;
+  text-transform: uppercase;
+  border: 1px solid $color-primary;
+  font-weight: bold;
+
+  @include hover;
 }

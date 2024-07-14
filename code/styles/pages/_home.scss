@@ -21,10 +21,9 @@
       }
 
       &-border {
+        margin: 0 20px;
         height: 2px;
         background-color: $color-button;
-        margin: 0 20px;
-        border: none;
       }
     }
   }
@@ -124,17 +123,10 @@
 
         button {
           padding: 10px;
-          border-radius: 3px;
-          border: 1px solid $color-primary;
-          color: $color-button;
-          text-transform: uppercase;
-          font-weight: bold;
           min-width: 200px;
           max-width: 30%;
-
-          @include hover {
-            color: $color-primary;
-          }
+        
+          @include hover
         }
       }
     }
