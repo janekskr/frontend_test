@@ -5,7 +5,7 @@ import { FaChevronUp } from "react-icons/fa";
 import { useAppContext } from "./Provider";
 
 export default function Footer() {
-  const {setName, reset} = useAppContext()
+  const {addName, reset} = useAppContext()
 
   return (
     <footer className="footer">
@@ -28,7 +28,7 @@ export default function Footer() {
       </button>
       <div className="popup">
         <button className="popup__option" onClick={reset}>&gt; Resetuj</button>
-        <button className="popup__option" onClick={() => setName("Jan Skrobot")}>&gt; Pokaż dane użytkownika</button>
+        <button className="popup__option" onClick={() => addName("Jan Skrobot")}>&gt; Pokaż dane użytkownika</button>
       </div>
       </div>
     </footer>
