@@ -8,11 +8,17 @@
 @import "layouts/footer";
 
 @import "pages/home";
+@import "pages/not-found";
 
 body {
   display: flex;
   flex-direction: column;
   color: $color-primary;
+}
+
+main {
+  background: $background-home;
+  flex: 1;
 }
 
 button {

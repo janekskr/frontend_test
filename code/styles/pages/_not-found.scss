@@ -1,0 +1,31 @@
+.not-found, .loading {
+    @include center;
+    
+    h1 {
+        font-size: 2rem;
+    }
+
+    & > * {
+        text-align: center;
+    }
+
+}
+
+.not-found {
+    flex-direction: column;
+    gap: 2rem;
+
+    a {
+        padding: 1.25rem 2rem;
+        font-size: 1.25rem;
+        font-weight: 700;
+        border-radius: 3rem;
+        background-color: $color-hover;
+        transition: .3s;
+
+        &:hover {
+            scale: 1.05;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+    }
+}

@@ -7,6 +7,7 @@ import {
   ReactNode,
   Dispatch,
   SetStateAction,
+  useEffect,
 } from "react";
 
 import data from "@/public/assets/data.json"
@@ -28,8 +29,8 @@ type Saying = {
 const AppContext = createContext<ContextProps>({} as ContextProps);
 
 export default function Provider({ children }: { children: ReactNode }) {
-  const [name, setName] = useState<string>("");
-  const [saying, setSaying] = useState<Saying[]>([data[0]])
+  const [name, setName] = useState<string>(localStorage.getItem("name") ?? "");
+  const [saying, setSaying] = useState<Saying[]>(localStorage.getItem("saying") ? JSON.parse(localStorage.getItem("saying")!) : [data[0]])
 
   const reset = () => {
     setName("")
@@ -43,6 +44,11 @@ export default function Provider({ children }: { children: ReactNode }) {
   const addNewSaying = (id: number) => {
     setSaying(prev => [...prev, data[id]])
   }
+
+  useEffect(() => {
+    localStorage.setItem("name", name);
+    localStorage.setItem("saying", JSON.stringify(saying));
+  }, [name, saying]);
 
   return (
     <AppContext.Provider value={{ name, saying, addNewSaying, setName, reset, setNewSaying }}>{children}</AppContext.Provider>
